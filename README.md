@@ -1,8 +1,8 @@
 #CS 199 Rust Group Project //  Anthony, Harsh, &amp; Neil
 
-Group Name :
+Group Name : 
 
-Group member names and NetIDs : Anthony Helsel (ahelsel2) , Neil , Harsh (
+Group member names and NetIDs : Anthony Helsel (ahelsel2) , Neil (neila2) , Harsh (htiwary2)
 
 Project Introduction
   Please provide a brief description of your project. List the goals and objectives of your project and explain why you’ve chosen to work on this project.
