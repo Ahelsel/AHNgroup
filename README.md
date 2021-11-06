@@ -1,6 +1,6 @@
-# CS 199 Rust Group Project //  Anthony, Harsh, &amp; Neil
+# CS 199 Rust Group Project - Anthony, Harsh, &amp; Neil
 
-**Group Name:** to be decided
+**Group:** Group 9
 
 **Group member names and NetIDs:** Anthony Helsel (ahelsel2), Neil Angajala (neila2), Harsh Tiwary (htiwary2)
 
