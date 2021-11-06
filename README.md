@@ -14,4 +14,5 @@ Please provide a moderate-length technical description of the major components o
 Please list some of the challenges you foresee running into.
   
 ## References
-If you’re basing the project off of some other work or if you received inspiration from an existing project, please list it here!
+Part of the inspiration for the project is from the following research paper/report: 
+http://redistricting.cs.illinois.edu/2021_Illinois.pdf
