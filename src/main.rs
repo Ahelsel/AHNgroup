@@ -19,9 +19,12 @@ fn main() {
         arbvec.push(vec![0,4,4,4,4,3,0,0,0]);
         arbvec.push(vec![0,0,0,4,4,4,0,0,0]);
         arbvec.push(vec![0,0,0,0,4,4,0,0,0]);
+        //0 = not in map
+        //1 - 6 = districts
         i += 1;
 
     }
+
     let arbitrary = CompMap {map: arbvec, numdists: 1};
     println!("{}", arbitrary.district_at(0, 0));
 }
