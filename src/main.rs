@@ -31,3 +31,71 @@ fn main() {
         Err(()) => println!("{}", "my bad bro")
     }
 }
+
+/* 
+    // Display/Print function; 
+    // Takes in the 2d Vector of Ints
+    // Converts each row into a string.
+    // A "0" will be represented by whitespace
+    // Otherwise, print each line to the file, adding
+    // a line break after each line.
+    // Prints to a file called "printoutput.txt"
+    // Takes in the 2d vec of ints
+    fn Printer() -> std::io::Result<()> {
+      CleanFile();
+      // For each row
+      for (int i = 0; i < input.size(); i++) {
+        // Create a string variable for that row;
+        let rowtext = RowToString(input.at(i));
+        for ( int j = 0; j < rowtext.size(); j++ ) {
+          if (rowtext.at(j) == '0') {
+            fs::write("printoutput.txt", " ")?;
+          } else {
+            fs::write("printoutput.txt", " ")?;
+          }
+        }
+        // Add a line break
+        // fs::write("printoutput.txt", )?;
+      }
+    Ok(());
+    }
+    
+    // Takes in vector of ints, converts it to string
+    // Make sure 0 is whitespace. 
+    // If Every Character in the vector is 0, then return nothing
+    // to avoid blank lines
+    fn RowToString() -> std::string {
+      let mut toret = "";
+      for ( int i = 0; i < input.size(); i++ ) {
+        if (input.at(i) == '0') {
+          toret.append(" ");
+        } else {
+          toret.append(input.at(i))
+        }
+      }
+      return toret;
+    }
+
+    
+    // MAYBE
+    // Takes in the original data, and prints only the areas that changed before && after the algorithm is run, 
+    // leaving out the unaffected areas.
+    // MAYBE
+    fn PrintDifferences() -> std::io::Result<()> {
+      todo!();
+    }
+    
+    // Every time the Print function is called, we need to erase the file.
+    // Or, if it's being called for the first time, we need to make sure the
+    // file exists. That's what this function will do.
+    fn CleanFile() -> std::io::Result<()> {
+      todo!();
+    }
+    
+    // Prints out a side by side representation
+    // of the data before and after the algorithm
+    // is called on it for restructuring  
+    fn PrintSXS() -> std::io::Result<()> {
+      todo!();
+    }
+*/
