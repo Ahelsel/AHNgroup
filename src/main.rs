@@ -50,7 +50,6 @@ fn main() {
         row_data.push('\n');
         data.push_str(row_data);
       }
-
       file.write_all(data.as_bytes())?;
       file.sync_all()?;
       Ok(());
@@ -81,12 +80,11 @@ fn main() {
       todo!();
     }
     
-    // Every time the Print function is called, we need to erase the file.
-    // Or, if it's being called for the first time, we need to make sure the
-    // file exists. That's what this function will do.
-    fn CleanFile() -> std::io::Result<()> {
-      todo!();
+    //Clears contents of the file so we can print something else on it
+    fn CleanFile(input: File) -> std::io::Result<()> {
+      input.truncate();
     }
+
     
     // Prints out a side by side representation
     // of the data before and after the algorithm
