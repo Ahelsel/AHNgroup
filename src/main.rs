@@ -41,12 +41,12 @@ fn main() {
     // a line break after each line.
     // Prints to a file called "printoutput.txt"
     // Takes in the 2d vec of ints
-    fn Printer(input: Vec<Vec<f64>>) -> std::io::Result<()> {
+    fn printer(input: Vec<Vec<f64>>) -> std::io::Result<()> {
       let mut file = File::create("printoutput.txt");
-      CleanFile(file);
+      clean_file(file);
       let mut data: String = "";
       for row in input {
-        let mut row_data = RowToString(row);
+        let mut row_data = row_to_string(row);
         row_data.push('\n');
         data.push_str(row_data);
       }
@@ -59,7 +59,7 @@ fn main() {
     // Make sure 0 is whitespace. 
     // If Every Character in the vector is 0, then return nothing
     // to avoid blank lines
-    fn RowToString() -> std::string {
+    fn row_to_string() -> std::string {
       let mut toret = "";
       for ( int i = 0; i < input.size(); i++ ) {
         if (input.at(i) == '0') {
@@ -76,12 +76,12 @@ fn main() {
     // Takes in the original data, and prints only the areas that changed before && after the algorithm is run, 
     // leaving out the unaffected areas.
     // MAYBE
-    fn PrintDifferences() -> std::io::Result<()> {
+    fn print_differences() -> std::io::Result<()> {
       todo!();
     }
     
     //Clears contents of the file so we can print something else on it
-    fn CleanFile(input: File) -> std::io::Result<()> {
+    fn clean_file(input: File) -> std::io::Result<()> {
       input.truncate();
     }
 
@@ -89,7 +89,7 @@ fn main() {
     // Prints out a side by side representation
     // of the data before and after the algorithm
     // is called on it for restructuring  
-    fn PrintSXS() -> std::io::Result<()> {
+    fn print_sxs() -> std::io::Result<()> {
       todo!();
     }
 */
