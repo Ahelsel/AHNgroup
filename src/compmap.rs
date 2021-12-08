@@ -1,6 +1,8 @@
+use std::collections::HashMap;
 pub struct CompMap {
     pub map: Vec<Vec<i32>>,
     pub numdists: i32,
+    pub masks: HashMap<i32, Vec<Vec<i32>>>
 } 
 
 impl CompMap  {
@@ -31,6 +33,24 @@ impl CompMap  {
             Err(()) => {
                 return false;
             },
+        }
+    }
+
+    pub fn generate_masks(&mut self) {
+        for i in 1..self.numdists + 1 {
+            let mut mask = Vec::new();
+            for j in 0..self.map.len() {
+                let mut col = Vec::new();
+                for k in 0..self.map[j].len() {
+                    if self.map[j][k] == i {
+                        col.push(1);
+                    }else {
+                        col.push(0);
+                    }
+                }
+                mask.push(col);
+            }
+            self.masks.insert(i, mask);
         }
     }
 }
