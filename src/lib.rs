@@ -12,6 +12,8 @@
     a line break after each line.
 
     Prints to a file called "printoutput.txt"
+    Everytime this function is called, the printoutput.txt file is
+    overwritten. Call save_file("filename_to_save_to") if you want to save it's contents.
     */
     pub fn printer(input: Vec<Vec<i32>>) -> std::io::Result<()> {
       let file = File::create("printoutput.txt");
@@ -57,18 +59,23 @@
 
     
     /*
-    Save results to different file so its not erase
-    (User has to call this command its not saved automatically);
+    Saves results of current "printoutput.txt" to a file
+    with name of user's choosing. 
+    For example, calling 'save_file("test")' will create a file
+    called "test.txt" and save the current contents of printoutput.txt to it.
+    If you call save_file() using the name of an already existing .txt file, the existing
+    file is overwritten.
     */
-    /*
-    static mut NUM_SAVED_FILES: i32 = 0;
-    fn save_file() {
-      unsafe {
-        let mut filename = "save".push_str(&NUM_SAVED_FILES.to_string()).push_str(".txt");
-      }
-      fs::copy("printoutput.txt", /saves/filename);
-      unsafe {
-        NUM_SAVED_FILES += 1;
-      }
+    pub fn save_file(name: &str) -> std::io::Result<()> {
+      let filename: String = (name.to_owned() + ".txt").to_string();
+      let file = File::create(&filename);
+      let mut file = match file {
+        Ok(file) => file,
+        Err(file) => {
+          panic!();
+        }
+      };
+      fs::copy("printoutput.txt", filename);
+      Ok(())
     }
-    */
+    
