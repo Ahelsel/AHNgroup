@@ -41,23 +41,19 @@ fn main() {
     // a line break after each line.
     // Prints to a file called "printoutput.txt"
     // Takes in the 2d vec of ints
-    fn Printer() -> std::io::Result<()> {
-      CleanFile();
-      // For each row
-      for (int i = 0; i < input.size(); i++) {
-        // Create a string variable for that row;
-        let rowtext = RowToString(input.at(i));
-        for ( int j = 0; j < rowtext.size(); j++ ) {
-          if (rowtext.at(j) == '0') {
-            fs::write("printoutput.txt", " ")?;
-          } else {
-            fs::write("printoutput.txt", " ")?;
-          }
-        }
-        // Add a line break
-        // fs::write("printoutput.txt", )?;
+    fn Printer(input: Vec<Vec<f64>>) -> std::io::Result<()> {
+      let mut file = File::create("printoutput.txt");
+      CleanFile(file);
+      let mut data: String = "";
+      for row in input {
+        let mut row_data = RowToString(row);
+        row_data.push('\n');
+        data.push_str(row_data);
       }
-    Ok(());
+
+      file.write_all(data.as_bytes())?;
+      file.sync_all()?;
+      Ok(());
     }
     
     // Takes in vector of ints, converts it to string
