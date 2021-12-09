@@ -28,14 +28,14 @@ fn main() {
 
     let mut arbitrary = CompMap {map: arbvec, numdists: 6, masks: HashMap::new()};
     arbitrary.generate_masks();
-    let first_vec = arbitrary.masks.get(&3).unwrap();
+    let first_vec = arbitrary.masks.get(&2).unwrap();
     for i in 0..(first_vec.len()) {
         for j in 0..first_vec[i].len() {
             print!("{}", first_vec[i][j]);
         }
         println!();
     }
-
+    println!("{}", arbitrary.compact(first_vec));
     match arbitrary.district_at(0, 0) {
         Ok(k) => println!("{}", k),
         Err(()) => println!("{}", "my bad bro")

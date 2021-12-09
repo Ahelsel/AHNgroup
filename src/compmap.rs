@@ -56,17 +56,17 @@ impl CompMap  {
         }
     }
 
-    pub fn compact(&self, masked_map: Vec<Vec<i32>>) -> i32 {
+    pub fn compact(&self, masked_map: &Vec<Vec<i32>>) -> i32 {
         let mut perimeter = 0;
-        for i in 0..self.map.len() {
-            for j in 0..self.map[i].len() {
-                if self.is_border(i, j) {
+        for i in 0..masked_map.len() {
+            for j in 0..masked_map[i].len() {
+                if masked_map[i][j] == 1 && self.is_border(i, j) {
                     perimeter += 1;
                 }
             }
         }
         
-        return perimeter;
+        return perimeter
 
     }
 }
