@@ -14,24 +14,24 @@ impl CompMap  {
     fn is_border(&self, row: usize, col: usize) -> bool {
         let wrapped_value = self.district_at(row, col);
         let mut value = 0;
-        if (row == 0 || row == self.map.len() - 1) { return false; }
-        if (col == 0 || col == self.map[row].len() - 1) { return false; }
+        if (row == 0 || row == self.map.len() - 1) { return true; }
+        if (col == 0 || col == self.map[row].len() - 1) { return true; }
         match wrapped_value {
             Ok(v) => {
                 if (row == 0 || row == self.map.len() - 1) { return true; }
                 if (col == 0 || col == self.map[row].len() - 1) { return true; }
-                if (self.map[row - 1][col - 1] != self.map[row][col]) { return false; }
-                if (self.map[row][col - 1] != self.map[row][col]) { return false; }
-                if (self.map[row + 1][col - 1] != self.map[row][col]) { return false; }
-                if (self.map[row - 1][col] != self.map[row][col]) { return false; }
-                if (self.map[row + 1][col] != self.map[row][col]) { return false; }
-                if (self.map[row - 1][col + 1] != self.map[row][col]) { return false; }
-                if (self.map[row][col + 1] != self.map[row][col]) { return false; }
-                if (self.map[row + 1][col + 1] != self.map[row][col]) { return false; }
-                return true;
+                if (self.map[row - 1][col - 1] != self.map[row][col]) { return true; }
+                if (self.map[row][col - 1] != self.map[row][col]) { return true; }
+                if (self.map[row + 1][col - 1] != self.map[row][col]) { return true; }
+                if (self.map[row - 1][col] != self.map[row][col]) { return true; }
+                if (self.map[row + 1][col] != self.map[row][col]) { return true; }
+                if (self.map[row - 1][col + 1] != self.map[row][col]) { return true; }
+                if (self.map[row][col + 1] != self.map[row][col]) { return true; }
+                if (self.map[row + 1][col + 1] != self.map[row][col]) { return true; }
+                return false;
             },
             Err(()) => {
-                return false;
+                panic!();
             },
         }
     }
@@ -46,7 +46,7 @@ impl CompMap  {
                 for k in 0..self.map[j].len() {
                     if self.map[j][k] == i {
                         col.push(1);
-                    }else {
+                    } else {
                         col.push(0);
                     }
                 }
@@ -64,9 +64,7 @@ impl CompMap  {
                     perimeter += 1;
                 }
             }
-        }
-        
-        return perimeter
-
+        } 
+        return perimeter;
     }
 }
