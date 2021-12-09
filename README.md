@@ -1,4 +1,4 @@
-# Computational Redistricting in Rust (CS 199 Final Project)
+# GROUP 9: Computational Redistricting in Rust (CS 199 Final Project)
 
 ## Group Information
 * **Group Number:** 9
