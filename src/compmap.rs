@@ -114,4 +114,21 @@ impl CompMap  {
         let borders : HashSet<i32> = self.borders(first);
         return borders.contains(&second);
     }
+
+    pub fn redistrict(&self, first: i32, second: i32) {
+        if !self.has_border(first, second) {return ();}
+        else {
+            let combined_mask : Vec<Vec<i32>> = self.mask_combiner(first, second);
+            let mut mask_overload : Vec<Vec<i32>> = Vec::new();
+            let mut mask_changer : Vec<Vec<i32>> = Vec::new();
+            for row in 0..(combined_mask.len()) {
+                mask_overload.push(Vec::new());
+                mask_changer.push(Vec::new());
+                for col in 0..combined_mask[row].len() {
+                    mask_overload[row].push(combined_mask[row][col] * self.map[row][col]);
+                    mask_changer[row].push(combined_mask[row][col] * self.map[row][col]);
+                }
+            }
+        }
+    }
 }
