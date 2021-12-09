@@ -67,4 +67,25 @@ impl CompMap  {
         } 
         return perimeter;
     }
+
+    pub fn mask_combiner(&self, first: i32, second: i32) -> Vec<Vec<i32>> {
+        let mut first_mask: Vec<Vec<i32>> = Vec::new();
+        let mut second_mask: Vec<Vec<i32>> = Vec::new();
+        match self.masks.get(&first) {
+            Some(mask) => first_mask = mask.to_vec(),
+            None => {println!("{}", "first not there!"); panic!();},
+        }
+        match self.masks.get(&second) {
+            Some(mask) => second_mask = mask.to_vec(),
+            None => {println!("{}", "second not there!"); panic!();},
+        }
+        let mut final_mask: Vec<Vec<i32>> = Vec::new();
+        for i in 0..self.map.len() {
+            final_mask.push(Vec::new());
+            for j in 0..self.map[i].len() {
+                final_mask[i].push(first_mask[i][j] + second_mask[i][j]);
+            }
+        }
+        return final_mask;
+    }
 }
