@@ -36,7 +36,7 @@ fn main() {
     ComputationalRedistricting::printer(&mut arbvec);
     let mut arbitrary = CompMap {map: arbvec, population: arbpop, numdists: 6, masks: HashMap::new()};
     arbitrary.generate_masks();
-    arbitrary.redistrict(1,3);
+    // arbitrary.redistrict(1,3);
     // ComputationalRedistricting::printer(&mut arbvec);
     // let first_vec = arbitrary.
     // for i in 0..(first_vec.len()) {
