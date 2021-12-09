@@ -6,9 +6,7 @@ use crate::compmap::*;
 
 fn main() {
     let mut arbvec = Vec::new();
-    
-    let mut i = 0;
-    let mut j = 0;
+    let mut arbpop = Vec::new();
 
     // 0 = not in map
     // 1 - 6 = districts
@@ -24,7 +22,18 @@ fn main() {
     arbvec.push(vec![0,0,0,4,4,4,0,0,0,0]);
     arbvec.push(vec![0,0,0,0,4,4,0,0,0,0]);
 
-    let mut arbitrary = CompMap {map: arbvec, numdists: 6, masks: HashMap::new()};
+    arbpop.push(vec![0,0,0,0,0,0,0,0,0,0]);
+    arbpop.push(vec![1,0,0,0,1,1,1,3,2,1]);
+    arbpop.push(vec![1,1,1,1,2,1,1,2,2,1]);
+    arbpop.push(vec![1,1,1,1,1,2,1,1,1,1]);
+    arbpop.push(vec![0,1,1,1,2,3,2,2,1,0]);
+    arbpop.push(vec![0,0,2,1,2,1,3,2,0,0]);
+    arbpop.push(vec![0,0,3,4,3,2,2,0,0,0]);
+    arbpop.push(vec![0,4,2,3,2,3,0,0,0,0]);
+    arbpop.push(vec![0,0,0,2,1,4,0,0,0,0]);
+    arbpop.push(vec![0,0,0,0,4,2,0,0,0,0]);
+
+    let mut arbitrary = CompMap {map: arbvec, population: arbpop, numdists: 6, masks: HashMap::new()};
     arbitrary.generate_masks();
     let first_vec = arbitrary.mask_combiner(1, 3);
     for i in 0..(first_vec.len()) {
