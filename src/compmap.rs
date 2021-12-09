@@ -1,6 +1,8 @@
 use std::collections::HashMap;
+use std::collections::HashSet;
 pub struct CompMap {
     pub map: Vec<Vec<i32>>,
+    pub population: Vec<Vec<i32>>,
     pub numdists: i32,
     pub masks: HashMap<i32, Vec<Vec<i32>>>
 } 
@@ -87,5 +89,24 @@ impl CompMap  {
             }
         }
         return final_mask;
+    }
+
+    pub fn borders(&self, first: i32) -> HashSet<i32> {
+        let mut borders : HashSet<i32> = HashSet::new();
+        for row in 0..(self.map.len()) {
+            for col in 0..self.map[row].len() {
+                if self.map[row][col] == first {
+                    if (self.map[row - 1][col - 1] != self.map[row][col]) { borders.insert(self.map[row - 1][col - 1]); }
+                    if (self.map[row][col - 1] != self.map[row][col]) { borders.insert(self.map[row][col - 1]); }
+                    if (self.map[row + 1][col - 1] != self.map[row][col]) { borders.insert(self.map[row + 1][col - 1]); }
+                    if (self.map[row - 1][col] != self.map[row][col]) { borders.insert(self.map[row - 1][col]); }
+                    if (self.map[row + 1][col] != self.map[row][col]) { borders.insert(self.map[row + 1][col]); }
+                    if (self.map[row - 1][col + 1] != self.map[row][col]) { borders.insert(self.map[row - 1][col + 1]); }
+                    if (self.map[row][col + 1] != self.map[row][col]) { borders.insert(self.map[row][col + 1]); }
+                    if (self.map[row + 1][col + 1] != self.map[row][col]) { borders.insert(self.map[row + 1][col + 1]); }
+                }
+            }
+        }
+        return borders;
     }
 }
