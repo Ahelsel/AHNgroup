@@ -36,6 +36,8 @@ impl CompMap  {
         }
     }
 
+    //this populates the HashMap masks by mapping each district number to a masked 2D vector map
+    //a masked map fills all other values in the map as 0 except for the function 
     pub fn generate_masks(&mut self) {
         for i in 1..self.numdists + 1 {
             let mut mask = Vec::new();
@@ -52,5 +54,19 @@ impl CompMap  {
             }
             self.masks.insert(i, mask);
         }
+    }
+
+    pub fn compact(&self, masked_map: Vec<Vec<i32>>) -> i32 {
+        let mut perimeter = 0;
+        for i in 0..self.map.len() {
+            for j in 0..self.map[i].len() {
+                if self.is_border(i, j) {
+                    perimeter += 1;
+                }
+            }
+        }
+        
+        return perimeter;
+
     }
 }
