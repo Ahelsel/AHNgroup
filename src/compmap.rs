@@ -56,6 +56,8 @@ impl CompMap  {
         }
     }
 
+    //this function returns the perimeter of a district when given 
+    //a masked map
     pub fn compact(&self, masked_map: &Vec<Vec<i32>>) -> i32 {
         let mut perimeter = 0;
         for i in 0..masked_map.len() {
@@ -68,6 +70,7 @@ impl CompMap  {
         return perimeter;
     }
 
+    
     pub fn mask_combiner(&self, first: i32, second: i32) -> Vec<Vec<i32>> {
         let mut first_mask: Vec<Vec<i32>> = Vec::new();
         let mut second_mask: Vec<Vec<i32>> = Vec::new();
