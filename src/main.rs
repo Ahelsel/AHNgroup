@@ -33,9 +33,12 @@ fn main() {
     arbpop.push(vec![0,0,0,2,1,4,0,0,0,0]);
     arbpop.push(vec![0,0,0,0,4,2,0,0,0,0]);
 
-    // let mut arbitrary = CompMap {map: arbvec, population: arbpop, numdists: 6, masks: HashMap::new()};
-    // arbitrary.generate_masks();
-    // let first_vec = arbitrary.mask_combiner(1, 3);
+    ComputationalRedistricting::printer(&mut arbvec);
+    let mut arbitrary = CompMap {map: arbvec, population: arbpop, numdists: 6, masks: HashMap::new()};
+    arbitrary.generate_masks();
+    arbitrary.redistrict(1,3);
+    // ComputationalRedistricting::printer(&mut arbvec);
+    // let first_vec = arbitrary.
     // for i in 0..(first_vec.len()) {
     //     for j in 0..first_vec[i].len() {
     //         print!("{}", first_vec[i][j]);
@@ -43,7 +46,7 @@ fn main() {
     //     println!();
     // }
 
-    ComputationalRedistricting::printer(&arbvec);
-    ComputationalRedistricting::save_file("test1");
+    // ComputationalRedistricting::printer(&arbvec);
+    // ComputationalRedistricting::save_file("test1");
 }
 

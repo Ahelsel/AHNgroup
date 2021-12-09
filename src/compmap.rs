@@ -130,5 +130,12 @@ impl CompMap  {
                 }
             }
         }
+
+        for i in 0..(self.map.len()) {
+            for j in 0..self.map[i].len() {
+                print!("{}", self.map[i][j]);
+            }
+            println!();
+        }
     }
 }

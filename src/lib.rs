@@ -17,7 +17,7 @@
     Everytime this function is called, the printoutput.txt file is
     overwritten. Call save_file("filename_to_save_to") if you want to save it's contents.
     */
-    pub fn printer(input: &Vec<Vec<i32>>) -> std::io::Result<()> {
+    pub fn printer(input: &mut Vec<Vec<i32>>) -> std::io::Result<()> {
 
       if Path::new("printoutput.txt").exists() {
         println!("Overwriting printoutput.txt with new data.");
