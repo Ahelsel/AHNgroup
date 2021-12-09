@@ -18,8 +18,13 @@
     overwritten. Call save_file("filename_to_save_to") if you want to save it's contents.
     */
     pub fn printer(input: Vec<Vec<i32>>) -> std::io::Result<()> {
+      if Path::new("printoutput.txt").exists() {
+        println!("Overwriting printoutput.txt with new data.");
+      } else {
+        println!("Printing data to printoutput.txt.");
+      }
+
       let file = File::create("printoutput.txt");
-      // VVV Did this because before file was being a Result<()> instead of a File
       let mut file = match file {
         Ok(file) => file,
         Err(file) => {
@@ -37,6 +42,7 @@
       }
       file.write_all(data.as_bytes())?;
       file.sync_all()?;
+      println!("Successfully printed data.");
       Ok(())
     }
 
