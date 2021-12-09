@@ -109,4 +109,9 @@ impl CompMap  {
         }
         return borders;
     }
+
+    pub fn has_border(&self, first: i32, second: i32) -> bool {
+        let borders : HashSet<i32> = self.borders(first);
+        return borders.contains(&second);
+    }
 }
