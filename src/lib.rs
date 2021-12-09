@@ -17,7 +17,8 @@
     Everytime this function is called, the printoutput.txt file is
     overwritten. Call save_file("filename_to_save_to") if you want to save it's contents.
     */
-    pub fn printer(input: Vec<Vec<i32>>) -> std::io::Result<()> {
+    pub fn printer(input: &Vec<Vec<i32>>) -> std::io::Result<()> {
+
       if Path::new("printoutput.txt").exists() {
         println!("Overwriting printoutput.txt with new data.");
       } else {
@@ -51,12 +52,11 @@
     Make sure 0 is whitespace. 
     If Every Character in the vector is 0, then return nothing
     to avoid blank lines
-    TODO: MAKE SURE ALL DATA IS DIGITS
     */
-    fn row_to_string(input: Vec<i32>) -> String {
+    fn row_to_string(input: &Vec<i32>) -> String {
       let mut toret: String = "".to_string();
       for i in input {
-        if i == 0 {
+        if i == &0 as &i32 {
           toret.push_str(" ");
         } else {
           toret.push_str(&i.to_string());
@@ -76,10 +76,16 @@
     */
     pub fn save_file(name: &str) -> std::io::Result<()> {
       let filename: String = (name.to_owned() + ".txt").to_string();
+      if Path::new(&filename).exists() {
+        println!("Saving current printoutput.txt content to {}.txt, overwriting old data.", name);
+      } else {
+        println!("Saving current printoutput.txt content to {}.txt", name);
+      }
       let file = File::create(&filename);
       let mut file = match file {
         Ok(file) => file,
         Err(file) => {
+          println!("Invalid Filename");
           panic!();
         }
       };
